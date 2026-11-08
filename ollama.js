@@ -9,6 +9,7 @@ class Ollama extends Obj {
       _url: null,
       _model: null,
       system: "",
+      log: null,
     });
   }
   get url() {
@@ -57,7 +58,8 @@ class Ollama extends Obj {
     const data = await rsp.json();
     const response = data.message?.content || "";
 
-    return { data, model, response };
+    agent.assign({ log: { data, model, response } });
+    return response;
   }
 }
 
