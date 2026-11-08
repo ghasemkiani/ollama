@@ -32,10 +32,11 @@ class Ollama extends Obj {
 	}
   async toGenerate(prompt) {
     const agent = this;
+    const { url } = agent;
     const { model } = agent;
     const { system } = agent;
     
-    const rsp = await fetch(`${OLLAMA_HOST}/api/chat`, {
+    const rsp = await fetch(`${url}/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
