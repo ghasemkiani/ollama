@@ -59,7 +59,7 @@ class Ollama extends Obj {
     const data = await rsp.json();
     const response = data.message?.content || "";
 
-    agent.assign({ log: { data, model, response } });
+    cutil.assign(agent, { log: { data, model, response } });
     return response;
   }
 }
